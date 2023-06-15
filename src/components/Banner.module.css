@@ -1,0 +1,21 @@
+.banner{
+
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    background-color: #fff7e9;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.title{
+    font-size: 48px;
+    font-weight: 700;
+    color: #ff731d
+}
+
+.subtitle{
+    font-size: 24px;
+    font-weight: 400;
+    color: #7f8487
+}

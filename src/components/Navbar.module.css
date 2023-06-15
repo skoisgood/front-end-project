@@ -1,0 +1,68 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    height: 60px;
+    background-color: whitesmoke;
+    padding: 20px 70px;
+
+  }
+
+  .button {
+    margin: auto;
+    text-decoration: none;
+    border: none;
+    height: auto;
+    width: auto;
+    font-size: 16px;
+    background-color: whitesmoke;
+    font-weight: 700;
+    color: rgb(93, 91, 91);
+    text-align: center;
+    
+  }
+  .button:hover {
+    margin: auto;
+    text-decoration: none;
+    border: none;
+    height: auto;
+    width: auto;
+    font-size: 16px;
+    background-color: whitesmoke;
+    font-weight: 700;
+    color: rgb(26, 26, 26);
+    text-align: center;
+    
+  }
+
+
+  .buttoncontainer{
+    display: flex;
+    gap:30px
+  }
+
+  .imglogo{
+    width: 40px;
+    height: 40px;
+
+  }
+
+  .learnhub{
+
+    font-size: 20px;
+    font-weight: 700;
+    color: #ff731d
+  }
+
+  .layoutlogo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+
+
+  .active{
+    color:red;
+  }
