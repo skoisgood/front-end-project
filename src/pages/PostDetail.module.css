@@ -1,0 +1,128 @@
+.container {
+    width: 60%;
+    max-width: 1440px;
+    margin: 32px auto;
+
+  }
+
+  .setCenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    gap: 22px;
+    background-color: #fff7e9;
+    color: #656b6e;
+    border-radius: 12px;
+    padding: 32px
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff731d;
+    /* text-align: center; */
+  }
+
+  .subtitle{
+    font-size: 22px;
+    font-weight: 400;
+    /* text-align: center; */
+    }
+  
+  .emdash {
+    margin-right: 4px;
+
+  }
+  
+  .commentFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 16px;
+    margin-right: 20px
+  }
+  
+  .commentContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #fff;
+    padding-left: 20px;
+    border-radius: 8px;
+}
+
+
+  .commentText {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: italic;
+    line-height: 1.4;
+    text-align: left;
+  }
+  
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      width: 90%;
+      margin: 16px;
+    }
+    .content {
+      padding: 24px;
+    }
+    .header {
+      gap: 8px;
+    }
+    .title {
+      font-size: 24px;
+    }
+    .subtitle {
+      font-size: 18px;
+    }
+    .comment {
+      padding: 32px 24px 24px 48px;
+    }
+    .comment::before {
+      font-size: 72px;
+      left: 12px;
+    }
+    .commentText {
+      font-size: 16px;
+    }
+    .commentFooter {
+      font-size: 14px;
+    }
+    .editLink {
+      font-size: 14px;
+    }
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+.editicon {
+    width: 24px;
+    height: 24px
+}
+ 
+.postBy{
+    margin-bottom: 20px;
+}
+
+.groupIcon {
+  display : flex;
+  gap: 10px;
+  margin-top: 10px;
+}

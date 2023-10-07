@@ -7,7 +7,7 @@ export const useAuth = () => {
   return context
 }
 
-const token = localStorage.getItem('token')
+export const token = localStorage.getItem('token')
 const user = localStorage.getItem('user')
 
 const AuthProvider = (props) => {
@@ -19,7 +19,7 @@ const AuthProvider = (props) => {
     const loginInfo = { username, password }
 
     try {
-      const res = await fetch('https://api.learnhub.thanayut.in.th/auth/login', {
+      const res = await fetch('http://localhost:8000/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginInfo),
@@ -48,7 +48,37 @@ const AuthProvider = (props) => {
     setUsername(null)
   }
 
-  return <AuthContext.Provider value={{ isLoggedIn, login, username, logout, token }}>{children}</AuthContext.Provider>
+  const register = async (username, avatarName, password) => {
+    const registerInfo = {
+      username: username,
+      name: avatarName,
+      password: password,
+    }
+
+    try {
+      const res = await fetch('http://localhost:8000/user/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(registerInfo),
+      })
+      const data = await res.json()
+      //   console.log(data)
+
+      if (data.statusCode === 409) {
+        //if status = 409 go to catch by using throw new error
+        throw new Error(data.message)
+      }
+    } catch (err) {
+      //receive throw from above then throw error to user
+      throw new Error(err.message)
+    }
+  }
+
+  return (
+    <AuthContext.Provider value={{ isLoggedIn, login, username, logout, token, register }}>
+      {children}
+    </AuthContext.Provider>
+  )
 }
 
 export default AuthProvider

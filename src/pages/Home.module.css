@@ -1,19 +1,17 @@
-.container{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: stretch;
-    margin: 10px;
-
-  }
-  
-.containerCreateButton {
-    display: flex;
-    justify-content: flex-end;
-    margin: 32px 128px
+.container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: stretch;
+  margin: 10px;
 }
 
+.containerCreateButton {
+  display: flex;
+  justify-content: flex-end;
+  margin: 32px 128px;
+}
 
 .button {
   text-decoration: none;
@@ -24,6 +22,5 @@
   color: #fff;
   font-size: 18px;
   font-weight: 700;
-  cursor: pointer
-  }
-  
+  cursor: pointer;
+}

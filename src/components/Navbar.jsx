@@ -9,14 +9,14 @@ const Navbar = () => {
     <div className={classes.navbar}>
       <a href="/" style={{ textDecoration: 'none' }}>
         <div className={classes.layoutlogo}>
-          <img className={classes.imglogo} src="./logo.svg" />
+          <img className={classes.imglogo} src="/logo.svg" />
           <span className={classes.learnhub}>LearnHub</span>
         </div>
       </a>
       <div className={classes.buttoncontainer}>
         {isLoggedIn ? (
           <>
-            <Link to="/login" className={classes.button} onClick={logout}>
+            <Link to="" className={classes.button} onClick={logout}>
               Logout
             </Link>
           </>

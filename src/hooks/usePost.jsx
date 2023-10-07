@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react'
 
-const usePosts = () => {
-  const [posts, setPosts] = useState(null)
+const usePost = (id) => {
+  const [post, setPost] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)
       try {
-        const res = await fetch('http://localhost:8000/content', {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' },
-        })
+        const res = await fetch(`http://localhost:8000/content/${id}`)
 
         const data = await res.json()
 
-        setPosts(data.data)
+        setPost(data)
       } catch (err) {
         console.log(err)
       } finally {
@@ -26,7 +23,6 @@ const usePosts = () => {
     fetchData()
   }, [])
 
-  return { posts, setPosts, isLoading }
+  return { post, isLoading }
 }
-
-export default usePosts
+export default usePost

@@ -1,25 +1,30 @@
-import React, { useState } from 'react'
-import classes from './Create.module.css'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import classes from './Edit.module.css'
 import ReactStars from 'react-stars'
-import { useAuth } from '../providers/AuthProviders'
+import { useNavigate, useParams } from 'react-router-dom'
+import usePost from '../hooks/usePost'
 
-const Create = () => {
+const Edit = () => {
+  const { id } = useParams()
+  const { post } = usePost(id)
   const [rating, setRating] = useState(0)
-  const [isSubmitDone, setSubmitDone] = useState(false)
-  const [url, setUrl] = useState('')
-  const [comment, setComment] = useState('')
   const navigate = useNavigate()
-  const { token } = useAuth()
+  const token = localStorage.getItem('token')
+  const [comment, setNewComment] = useState('')
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    if (post) {
+      setNewComment(post.comment)
+      setRating(post.rating)
+    }
+  }, [post])
+
+  const handleEdit = async (e) => {
     e.preventDefault()
-
     try {
-      const res = await fetch('http://localhost:8000/content', {
-        method: 'POST',
+      const res = await fetch(`http://localhost:8000/content/${id}`, {
+        method: 'PATCH',
         body: JSON.stringify({
-          videoUrl: url,
           comment: comment,
           rating: rating,
         }),
@@ -28,30 +33,29 @@ const Create = () => {
           Authorization: `Bearer ${token}`,
         },
       })
+
       const data = await res.json()
+      console.log(data)
+
+      // alert('Success')
       return data
     } catch (err) {
       console.log(err)
     } finally {
-      navigate('/')
+      navigate(`/content/${id}`)
     }
   }
 
   const setStarValue = (newrating) => {
     setRating(newrating)
   }
-
   return (
     <div className={classes.container}>
-      <div className={classes.title}>Create new content</div>
-      <form className={classes.form} onSubmit={handleSubmit}>
-        <div className={classes.formGroup}>
-          <label htmlFor="video-url">Video URL</label>
-          <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} required />
-        </div>
+      <div className={classes.title}>Edit content</div>
+      <form className={classes.form} onSubmit={handleEdit}>
         <div className={classes.formGroup}>
           <label htmlFor="comment">Comment (280 characters maximum)</label>
-          <input type="text" value={comment} onChange={(e) => setComment(e.target.value)} />
+          <input type="text" value={comment} onChange={(e) => setNewComment(e.target.value)} />
         </div>
         <div className={classes.formGroup}>
           <div className={classes.ratingContainer}>
@@ -60,11 +64,11 @@ const Create = () => {
           </div>
         </div>
         <div className={classes.formGroup}>
-          <button type="submit">Create</button>
+          <button type="submit">Edit</button>
         </div>
       </form>
     </div>
   )
 }
 
-export default Create
+export default Edit

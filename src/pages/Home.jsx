@@ -21,8 +21,7 @@ const Home = () => {
       )}
 
       <div>
-        {' '}
-        <div>{isLoading ? <h1>Loading...</h1> : null}</div>
+        {/* <div>{isLoading ? <h1>Loading...</h1> : null}</div> */}
         <div className={classes.container}>
           {posts &&
             posts.map((post) => {
