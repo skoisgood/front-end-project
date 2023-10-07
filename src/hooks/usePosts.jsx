@@ -15,7 +15,7 @@ const usePosts = () => {
 
         const data = await res.json()
 
-        setPosts(data.data)
+        setPosts(data.data.sort((a, b) => b.id - a.id))
       } catch (err) {
         console.log(err)
       } finally {

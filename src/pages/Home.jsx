@@ -20,7 +20,7 @@ const Home = () => {
         </div>
       )}
 
-      <div>
+      <div className={classes.center}>
         {/* <div>{isLoading ? <h1>Loading...</h1> : null}</div> */}
         <div className={classes.container}>
           {posts &&
